@@ -109,14 +109,3 @@ with torch.no_grad():
 
 
 
-
-## GitHub Workflow Best Practices
-
-'''**Repo structure to use from day one:**
-
-my-rl-project/
-├── train.py          # your main script
-├── requirements.txt  # pip freeze > requirements.txt
-├── .gitignore        # ignore __pycache__, *.pt, runs/, etc.
-└── README.md
-'''
