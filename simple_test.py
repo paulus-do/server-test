@@ -3,6 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 import time
 import matplotlib.pyplot as plt
+import numpy as np
 
 # ── 1. System check ──────────────────────────────────────────────
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -44,8 +45,10 @@ for step in range(N_STEPS):
     # target is sqrt(x^2 + y^2)
     x = obs[:, 0]
     y = obs[:, 1]
-    targets = torch.sqrt(x * x + y * y).unsqueeze(1)
-
+    noise=np.random.normal(0,0.1)
+    targets = torch.sqrt(x * x + y * y)
+    targets=targets+noise
+    targets=targets.unsqueeze(1)
     preds = model(obs)
     loss  = loss_fn(preds, targets)
 
